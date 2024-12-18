@@ -6,6 +6,7 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 import matplotlib.pyplot as plt
 
+
 model = torch.load('model.pth')
 
 test_data = datasets.FashionMNIST(
@@ -14,7 +15,6 @@ test_data = datasets.FashionMNIST(
     download=True,
     transform=ToTensor()
 )
-
 
 infer_dataloader = DataLoader(test_data, batch_size=1, shuffle=True)
 random_sample = next(iter(infer_dataloader))
@@ -27,7 +27,6 @@ with torch.no_grad():
     output = model(X)
     pred = torch.argmax(output, dim=1).item()
     print(f'pred {pred}')
-
 
     labels_map = {
         0: "T-Shirt",
@@ -53,4 +52,3 @@ with torch.no_grad():
         plt.axis("off")
         plt.imshow(img.squeeze(), cmap="gray")
     plt.show()
-
