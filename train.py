@@ -10,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 learning_rate = .1 #1e-2
 batch_size = 64
-epochs = 5
+epochs = 100
 
 training_data = datasets.FashionMNIST(
     root="data",
